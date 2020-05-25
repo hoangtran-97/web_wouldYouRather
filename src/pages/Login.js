@@ -1,12 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+const User = ({props}) => {
+    const {id} = props;
+    const {name} = users[id];
+    return <div>{name}</div>;
+};
 class Login extends Component {
+    componentDidMount() {}
+
     render() {
+        const {userIDs, users} = this.props;
         return (
-            <div>{/* {this.props.users.map((user) => (
-                    <div>{user.id}</div>
-                ))} */}
+            <div>
+                {userIDs.map((id, index) => (
+                    <User key={index} id={id} />
+                ))}
             </div>
         );
     }
@@ -14,7 +23,8 @@ class Login extends Component {
 
 function mapStateToProps({users}) {
     return {
-        users
+        users,
+        userIDs: Object.keys(users)
     };
 }
 export default connect(mapStateToProps)(Login);
