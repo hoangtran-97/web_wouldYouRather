@@ -6,8 +6,9 @@ import {connect} from 'react-redux';
 import {Home} from './pages/Home';
 import {NewQuestion} from './pages/NewQuestion';
 import {LeaderBoard} from './pages/LeaderBoard';
-import {Login} from './pages/Login';
+import Login from './pages/Login';
 import {handleInitialData} from './actions/shared';
+import './css/App.css';
 
 class App extends Component {
     componentDidMount() {
@@ -18,10 +19,21 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <Link to="/">Home</Link>
-                <Link to="/add">New Question</Link>
-                <Link to="/leaderboard">Leader Board</Link>
-                <Link to="/login">Login</Link>
+                <div className="nav_container">
+                    <Link to="/" className="nav">
+                        Home
+                    </Link>
+                    <Link to="/add" className="nav">
+                        New Question
+                    </Link>
+                    <Link to="/leaderboard" className="nav">
+                        Leader Board
+                    </Link>
+                    <Link to="/login" className="nav">
+                        Login
+                    </Link>
+                </div>
+
                 <Switch>
                     <Route exact path="/">
                         <Home />

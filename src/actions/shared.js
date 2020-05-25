@@ -6,5 +6,5 @@ import {setAuthedUser} from './authedUser';
 const AUTHED_ID = 'tylermcginnis';
 export const handleInitialData = () => (dispatch) => getInitialData().then(({users}) => {
     dispatch(receiveUsers(users));
-    dispatch(setAuthedUser(AUTHED_ID));
+    // dispatch(setAuthedUser(AUTHED_ID));
 });
