@@ -29,6 +29,8 @@ class Home extends Component {
                 toggle: !toggle
             }));
         };
+        console.log('users', users);
+
         return (
             <>
                 <button type="button" onClick={() => changeTab()} style={{color: !toggle && 'red'}}>

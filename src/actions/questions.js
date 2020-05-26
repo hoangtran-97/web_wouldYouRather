@@ -19,7 +19,7 @@ function answerQuestion({authedUser, qid, answer}) {
 export function handleAnswerQuestion(info) {
     return (dispatch) => {
         dispatch(answerQuestion(info));
-        console.log(info);
+        console.log('info', info);
 
         return saveQuestionAnswer(info).catch((e) => {
             console.warn('Error in saving poll: ', e);
