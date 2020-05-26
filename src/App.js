@@ -18,7 +18,7 @@ class App extends Component {
     }
 
     render() {
-        const {loadingBar} = this.props;
+        const {loadingBar, authedUser} = this.props;
         return (
             <>
                 <LoadingBar />
@@ -38,6 +38,7 @@ class App extends Component {
                                 <Link to="/" className="nav">
                                     Login
                                 </Link>
+                                {authedUser && <div>Welcome: {authedUser}</div>}
                             </div>
 
                             <Switch>
@@ -62,7 +63,7 @@ class App extends Component {
     }
 }
 
-function mapStateToProps({loadingBar}) {
-    return {loadingBar};
+function mapStateToProps({loadingBar, authedUser}) {
+    return {loadingBar, authedUser};
 }
 export default connect(mapStateToProps)(App);
