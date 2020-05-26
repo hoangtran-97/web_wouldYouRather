@@ -4,6 +4,16 @@ import {Redirect} from 'react-router-dom';
 import './style.css';
 
 class Poll extends Component {
+    userVote = () => {
+        const {
+            users, id, questions, authedUser
+        } = this.props;
+        const {author, optionOne, optionTwo} = questions[id];
+        if (optionOne.votes.includes(authedUser) || optionTwo.votes.includes(authedUser)) {
+            alert('you already voted');
+        }
+    };
+
     render() {
         const {
             users, id, questions, authedUser
@@ -31,12 +41,16 @@ class Poll extends Component {
                 <img src={avatarURL} alt="ava" className="login_user_ava" />
                 <p>Author: {author}</p>
                 <div className="poll_vote_button" style={styles.hightlight1}>
-                    <button type="button"> {optionOne.text}</button>
+                    <button type="button" onClick={() => this.userVote()}>
+                        {optionOne.text}
+                    </button>
                     <div className="vote_score">{optionOne.votes.length}</div>
                     <div className="vote_percent">{onePercent}%</div>
                 </div>
                 <div className="poll_vote_button" style={styles.hightlight2}>
-                    <button type="button"> {optionTwo.text}</button>
+                    <button type="button" onClick={() => this.userVote()}>
+                        {optionTwo.text}
+                    </button>
                     <div className="vote_score">{optionTwo.votes.length}</div>
                     <div className="vote_percent">{twoPercent}%</div>
                 </div>

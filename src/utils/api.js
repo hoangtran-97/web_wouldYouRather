@@ -8,6 +8,13 @@ export function getInitialData() {
         questions
     }));
 }
+export function saveQuestionAnswer(info) {
+    return _saveQuestionAnswer(info);
+}
+export function saveQuestion(info) {
+    return _saveQuestion(info);
+}
+
 export function findDif(a1, a2) {
     const a = [];
     const diff = [];
