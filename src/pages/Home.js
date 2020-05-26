@@ -7,7 +7,7 @@ import {findDif} from '../utils/api';
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {toggle: false};
+        this.state = {toggle: true};
     }
 
     componentDidMount() {}
@@ -31,10 +31,10 @@ class Home extends Component {
         };
         return (
             <>
-                <button type="button" onClick={() => changeTab()}>
+                <button type="button" onClick={() => changeTab()} style={{color: !toggle && 'red'}}>
                     Answered
                 </button>
-                <button type="button" onClick={() => changeTab()}>
+                <button type="button" onClick={() => changeTab()} style={{color: toggle && 'red'}}>
                     Unanswered
                 </button>
                 {!toggle ? (
