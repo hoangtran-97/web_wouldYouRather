@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import Question from '../components/Question/Question';
+import {findDif} from '../utils/api';
 
 class Home extends Component {
     componentDidMount() {}
@@ -16,6 +17,7 @@ class Home extends Component {
         }
         const {answers} = users[authedUser];
         const doneQuestions = Object.keys(answers);
+        const notDoneQuestion = findDif(doneQuestions, allQuestions);
 
         return (
             <>
