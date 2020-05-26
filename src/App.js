@@ -9,6 +9,7 @@ import NewQuestion from './pages/NewQuestion';
 import LeaderBoard from './pages/LeaderBoard';
 import Login from './pages/Login';
 import {handleInitialData} from './actions/shared';
+import {setAuthedUser} from './actions/authedUser';
 import './css/App.css';
 
 class App extends Component {
@@ -18,7 +19,10 @@ class App extends Component {
     }
 
     render() {
-        const {loadingBar, authedUser} = this.props;
+        const {loadingBar, authedUser, dispatch} = this.props;
+        const logout = () => {
+            dispatch(setAuthedUser(null));
+        };
         return (
             <>
                 <LoadingBar />
@@ -38,7 +42,14 @@ class App extends Component {
                                 <Link to="/login" className="nav">
                                     Login
                                 </Link>
-                                {authedUser && <div>Welcome: {authedUser}</div>}
+                                {authedUser && (
+                                    <>
+                                        <div>Welcome: {authedUser}</div>
+                                        <button type="button" className="nav_logout" onClick={() => logout()}>
+                                            Log Out
+                                        </button>
+                                    </>
+                                )}
                             </div>
 
                             <Switch>

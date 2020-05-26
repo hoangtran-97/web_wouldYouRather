@@ -14,3 +14,15 @@
     align-items: center;
     margin-top: 20px;
 }
+
+.nav_logout {
+    background-color: #424242;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.nav_logout:hover {
+    filter: brightness(110%);
+}
