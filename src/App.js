@@ -66,9 +66,7 @@ class App extends Component {
                                 <Route path="/login">
                                     <Login />
                                 </Route>
-                                <Route path="/questions/:id">
-                                    <Poll />
-                                </Route>
+                                <Route path="/questions/:id" component={Poll} />
                             </Switch>
                         </Router>
                     </>
