@@ -6,7 +6,7 @@ class Login extends Component {
     componentDidMount() {}
 
     render() {
-        const {userIDs, users} = this.props;
+        const {userIDs} = this.props;
 
         return (
             <div>
@@ -20,7 +20,6 @@ class Login extends Component {
 
 function mapStateToProps({users}) {
     return {
-        users,
         userIDs: Object.keys(users)
     };
 }
