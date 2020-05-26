@@ -18,10 +18,11 @@ class App extends Component {
     }
 
     render() {
+        const {loadingBar} = this.props;
         return (
             <>
                 <LoadingBar />
-                {this.props.loadingBar.default === 0 && (
+                {loadingBar.default === 0 && (
                     <>
                         <Router>
                             <div className="nav_container">
@@ -61,7 +62,7 @@ class App extends Component {
     }
 }
 
-function mapStateToProps({authedUser, loadingBar, users}) {
-    return {loadingBar, users};
+function mapStateToProps({loadingBar}) {
+    return {loadingBar};
 }
 export default connect(mapStateToProps)(App);
