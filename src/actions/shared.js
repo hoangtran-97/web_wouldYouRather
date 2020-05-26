@@ -1,14 +1,13 @@
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
 import {getInitialData} from '../utils/api';
 import {receiveUsers} from './users';
-import {setAuthedUser} from './authedUser';
-
-const AUTHED_ID = 'tylermcginnis';
+import {receiveQuestions} from './questions';
 
 export const handleInitialData = () => (dispatch) => {
     dispatch(showLoading());
-    return getInitialData().then(({users}) => {
+    return getInitialData().then(({users, questions}) => {
         dispatch(receiveUsers(users));
+        dispatch(receiveQuestions(questions));
         dispatch(hideLoading());
     });
 };
