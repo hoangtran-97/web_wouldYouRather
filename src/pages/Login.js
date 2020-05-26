@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import LoginUser from '../components/LoginUser/LoginUser';
 
-const User = ({props}) => {
-    const {id} = props;
-    const {name} = users[id];
-    return <div>{name}</div>;
-};
 class Login extends Component {
     componentDidMount() {}
 
     render() {
         const {userIDs, users} = this.props;
+
         return (
             <div>
                 {userIDs.map((id, index) => (
-                    <User key={index} id={id} />
+                    <LoginUser key={index} id={id} />
                 ))}
             </div>
         );
