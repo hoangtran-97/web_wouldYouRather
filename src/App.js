@@ -25,7 +25,7 @@ class App extends Component {
                     <>
                         <Router>
                             <div className="nav_container">
-                                <Link to="/" className="nav">
+                                <Link to="/home" className="nav">
                                     Home
                                 </Link>
                                 <Link to="/add" className="nav">
@@ -34,13 +34,13 @@ class App extends Component {
                                 <Link to="/leaderboard" className="nav">
                                     Leader Board
                                 </Link>
-                                <Link to="/login" className="nav">
+                                <Link to="/" className="nav">
                                     Login
                                 </Link>
                             </div>
 
                             <Switch>
-                                <Route exact path="/">
+                                <Route path="/home">
                                     <Home />
                                 </Route>
                                 <Route path="/add">
@@ -49,7 +49,7 @@ class App extends Component {
                                 <Route path="/leaderboard">
                                     <LeaderBoard />
                                 </Route>
-                                <Route path="/login">
+                                <Route path="/">
                                     <Login />
                                 </Route>
                             </Switch>
