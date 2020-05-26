@@ -1,7 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
-export const LeaderBoard = () => (
-    <div>
-        <p>Lead</p>
-    </div>
-);
+class LeaderBoard extends Component {
+    componentDidMount() {}
+
+    render() {
+        const {authedUser} = this.props;
+        if (authedUser === null) {
+            alert('You need to login first');
+            return <Redirect to="/login" />;
+        }
+        return <div>LeaderBoard</div>;
+    }
+}
+
+function mapStateToProps({authedUser}) {
+    return {authedUser};
+}
+export default connect(mapStateToProps)(LeaderBoard);
