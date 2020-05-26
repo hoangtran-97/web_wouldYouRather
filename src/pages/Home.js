@@ -5,6 +5,11 @@ import Question from '../components/Question/Question';
 import {findDif} from '../utils/api';
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {toggle: false};
+    }
+
     componentDidMount() {}
 
     render() {
@@ -16,14 +21,35 @@ class Home extends Component {
             return <Redirect to="/login" />;
         }
         const {answers} = users[authedUser];
-        const doneQuestions = Object.keys(answers);
-        const notDoneQuestion = findDif(doneQuestions, allQuestions);
-
+        const answeredQuestions = Object.keys(answers);
+        const unansweredQuestion = findDif(answeredQuestions, allQuestions);
+        const {toggle} = this.state;
+        const changeTab = () => {
+            this.setState(() => ({
+                toggle: !toggle
+            }));
+        };
         return (
             <>
-                {doneQuestions.map((id, index) => (
-                    <Question key={index} id={id} questions={questions} />
-                ))}
+                <button type="button" onClick={() => changeTab()}>
+                    Answered
+                </button>
+                <button type="button" onClick={() => changeTab()}>
+                    Unanswered
+                </button>
+                {!toggle ? (
+                    <>
+                        {answeredQuestions.map((id, index) => (
+                            <Question key={index} id={id} questions={questions} />
+                        ))}
+                    </>
+                ) : (
+                    <>
+                        {unansweredQuestion.map((id, index) => (
+                            <Question key={index} id={id} questions={questions} />
+                        ))}
+                    </>
+                )}
             </>
         );
     }
