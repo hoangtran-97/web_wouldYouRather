@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import {connect} from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
-import {Home} from './pages/Home';
+import Home from './pages/Home';
 import {NewQuestion} from './pages/NewQuestion';
 import {LeaderBoard} from './pages/LeaderBoard';
 import Login from './pages/Login';
