@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import {handleAnswerQuestion} from '../../actions/questions';
 import './style.css';
 
 class Poll extends Component {
-    userVote = () => {
+    userVote = (vote) => {
         const {
-            users, id, questions, authedUser
+            id, questions, authedUser, dispatch
         } = this.props;
-        const {author, optionOne, optionTwo} = questions[id];
+        const {optionOne, optionTwo} = questions[id];
         if (optionOne.votes.includes(authedUser) || optionTwo.votes.includes(authedUser)) {
-            alert('you already voted');
+            return alert('you already voted');
         }
+
+        return dispatch(handleAnswerQuestion({authedUser, qid: id, answer: vote}));
     };
 
     render() {
@@ -41,14 +44,14 @@ class Poll extends Component {
                 <img src={avatarURL} alt="ava" className="login_user_ava" />
                 <p>Author: {author}</p>
                 <div className="poll_vote_button" style={styles.hightlight1}>
-                    <button type="button" onClick={() => this.userVote()}>
+                    <button type="button" onClick={() => this.userVote('optionOne')}>
                         {optionOne.text}
                     </button>
                     <div className="vote_score">{optionOne.votes.length}</div>
                     <div className="vote_percent">{onePercent}%</div>
                 </div>
                 <div className="poll_vote_button" style={styles.hightlight2}>
-                    <button type="button" onClick={() => this.userVote()}>
+                    <button type="button" onClick={() => this.userVote('optionTwo')}>
                         {optionTwo.text}
                     </button>
                     <div className="vote_score">{optionTwo.votes.length}</div>
