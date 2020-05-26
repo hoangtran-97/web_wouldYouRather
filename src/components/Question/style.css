@@ -8,4 +8,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    color: black;
+}
+
+.question_link:visited, .question_link {
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 5px;
+    text-decoration: none;
+    background-color: #424242;
+    color: white;
 }

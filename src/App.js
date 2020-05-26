@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import NewQuestion from './pages/NewQuestion';
 import LeaderBoard from './pages/LeaderBoard';
 import Login from './pages/Login';
+import Poll from './components/Poll/Poll';
 import {handleInitialData} from './actions/shared';
 import {setAuthedUser} from './actions/authedUser';
 import './css/App.css';
@@ -64,6 +65,9 @@ class App extends Component {
                                 </Route>
                                 <Route path="/login">
                                     <Login />
+                                </Route>
+                                <Route path="/questions/:id">
+                                    <Poll />
                                 </Route>
                             </Switch>
                         </Router>

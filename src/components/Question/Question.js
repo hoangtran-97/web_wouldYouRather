@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './style.css';
 
 const Question = ({id, questions}) => {
@@ -10,7 +11,9 @@ const Question = ({id, questions}) => {
             <p>{optionOne.text}</p>
             <p>OR</p>
             <p>{optionTwo.text}</p>
-            <button type="button">Go to poll</button>
+            <Link type="button" to={`/questions/${id}`} className="question_link">
+                Go to poll
+            </Link>
         </div>
     );
 };
